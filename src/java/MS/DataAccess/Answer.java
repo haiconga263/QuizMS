@@ -25,4 +25,22 @@ public class Answer {
     public void setID(int id){
         this.id = id;
     }
+    public int getId_question(){
+        return id_question;
+    }
+    public void setId_question(int id){
+        this.id_question = id;
+    }
+    public String getUsername(){
+        return this.username;
+    }
+    public void setUsername(String username){
+        this.username = username;
+    }
+    public String getAnswer(){
+        return this.answer;
+    }
+    public void setAnswer(String answer){
+        this.answer = answer;
+    }
 }
