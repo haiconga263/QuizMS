@@ -35,7 +35,7 @@
                             Nhớ cho lần đăng nhập sau?
                         </label>
                     </div>
-                    <button type="submit" class="btn clr-none bg-cyan-800"><b>Đăng nhập</b></button>
+                    <button type="submit" value="submit" name="submit" class="btn clr-none bg-cyan-800"><b>Đăng nhập</b></button>
                 </form>
             </div>
         </div>
@@ -82,21 +82,26 @@
 
 </div>
 <%  
-    AccountBUS acc = new AccountBUS();
-    
-    String username = request.getParameter("username");
-    String pass = request.getParameter("pass");
-    
-    ResultSet rs = acc.Login(username, pass);
-    while(rs.next()){
-        if (username == rs.getNString("username") & pass == rs.getString("pass")) {
-             if(rs.getInt("type") == 0)
-                  response.sendRedirect("/student/main.jsp");
-             else
-                  response.sendRedirect("/student/main.jsp");
+    if (request.getParameter("submit") != null) {
+        AccountBUS acc = new AccountBUS();
+
+        String username = request.getParameter("username");
+        String pass = request.getParameter("pass");
+
+        ResultSet rs = acc.Login(username, pass);
+        while(rs.next()){
+            String us = rs.getString("username");
+            String pa = rs.getString("pass");
+            if (username == us & pass == pa) {
+                 if(rs.getInt("type") == 0){
+                      response.sendRedirect("/student/main.jsp");
+                 }
+                 else{
+                      response.sendRedirect("/student/main.jsp");
+                 }
+            }   
         }
     }
-    
     
     // Here you put the check on the username and password
     //if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("admin")) {

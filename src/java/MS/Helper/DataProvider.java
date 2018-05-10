@@ -19,12 +19,12 @@ public class DataProvider {
     private Statement statement = null;
     private Connection connection = null;
     private ResultSet result = null;
-    private final String DatabaseName = "/Users/hieptran/Desktop/abc.db";
+    private final String DatabaseName = "";
     
     public Connection getConnection() throws Exception{
         try{
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:DatabaseName";          
+            String url = "jdbc:sqlite:/Users/hieptran/Desktop/abc.db";          
             connection = DriverManager.getConnection(url);
                      
         } catch(SQLException ex){

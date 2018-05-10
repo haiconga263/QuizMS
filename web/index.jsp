@@ -60,7 +60,7 @@
     <link href="lib/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <script src="lib/datatable/jquery.dataTables.min.js"></script>
     <script src="lib/datatable/dataTables.bootstrap4.min.js"></script>
-    <script>
+<!--    <script>
         var page = getUrlParameter('page');
         if (!page || page == '') page = 'student/main';
         $("#content").load(page + '.jsp', function () { });
@@ -70,7 +70,7 @@
             window.location.href = '?page=search&keyword=' + key;
         }
     </script>
-
+-->
 
 </body>
 </html>
