@@ -3,15 +3,18 @@
     Created on : May 8, 2018, 11:08:51 AM
     Author     : hieptd
 --%>
-
+<%@page import="MS.DataAccess.Account"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="MS.Business.AccountBUS"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% 
+    if(session.getAttribute("username") != null){
+            session.invalidate();
+    }
+     
     if (request.getParameter("submit") != null) {
         AccountBUS acc = new AccountBUS();
-
         String username = request.getParameter("username");
         String pass = request.getParameter("pass");
 
@@ -19,12 +22,14 @@
         while(rs.next()){
             String us = rs.getString("username");
             String pa = rs.getString("pass");
+            
             if (username.equals(us) & pass.equals(pa)) {
                  if(rs.getInt("type") == 0){
+                      session.setAttribute("username",us);
                       response.sendRedirect("teacher/main.jsp");
                  }
                  else{
-                      response.sendRedirect("QuizMS/student/main.jsp");
+                      response.sendRedirect("student/main.jsp");
                  }
             }   
         }

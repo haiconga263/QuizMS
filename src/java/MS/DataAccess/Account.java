@@ -13,6 +13,7 @@ public class Account {
     private int id, type;
     private String username, pass;
     
+    public Account(){}
     public Account(int id, String username, String pass, int type){
         this.id = id;
         this.username = username;

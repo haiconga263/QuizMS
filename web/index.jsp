@@ -49,7 +49,7 @@
     </header>
     <!--END: Menu-->
 
-    <div class="main pt-4 mt-5">
+        <div class="main pt-4 mt-5">
         <div class="container-fluid" id="content"></div>
     </div>
 
