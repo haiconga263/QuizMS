@@ -8,9 +8,40 @@
 <%@page import="MS.Business.AccountBUS"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-﻿<!--forms-->
-<div class="container-fluid pt-4">
+<% 
+    if (request.getParameter("submit") != null) {
+        AccountBUS acc = new AccountBUS();
+
+        String username = request.getParameter("username");
+        String pass = request.getParameter("pass");
+
+        ResultSet rs = acc.Login(username, pass);
+        while(rs.next()){
+            String us = rs.getString("username");
+            String pa = rs.getString("pass");
+            if (username.equals(us) & pass.equals(pa)) {
+                 if(rs.getInt("type") == 0){
+                      response.sendRedirect("teacher/main.jsp");
+                 }
+                 else{
+                      response.sendRedirect("QuizMS/student/main.jsp");
+                 }
+            }   
+        }
+    }
+ %>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Q-Exam</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link href="lib/bootstrap-4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/color.css" rel="stylesheet" />
+</head>
+<body>   
     <div class="row">
         <div class="col-4"></div>
         <div class="col-5">
@@ -39,77 +70,14 @@
                 </form>
             </div>
         </div>
-        <div class="col-4"></div>
-        <!--/.login-form-->
-        <!--sing-up-form-->
-        <!--
-        <div class="col-5">
-            <div class="account-holder">
-                <div class="row justify-content-center clr-cyan-800">
-                    <h3>Bạn chưa có tài khoản?</h3>
-                </div>
-                <br>
-                <div class="row justify-content-center">
-                    <form class="w-75">
-                        <div class="form-group">
-                            <label class="control-label required" for="name">Họ tên<sup style="color:red" class="p-1">*</sup></label>
-                            <input id="r_name" name="r_name" type="text" class="form-control" placeholder="Nhập họ tên">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label required" for="phone">Số điện thoại<sup style="color:red" class="p-1">*</sup></label>
-                            <input id="r_phone" name="r_phone" type="text" class="form-control" placeholder="Nhập số điện thoại">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label required" for="email">Email<sup style="color:red" class="p-1">*</sup></label>
-                            <input id="r_email" name="r_email" type="text" class="form-control" placeholder="Nhập email">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label required" for="password">Mật khẩu<sup style="color:red" class="p-1">*</sup></label>
-                            <input id="r_pwd" name="r_pwd" type="password" class="form-control" placeholder="Nhập mật khẩu">
-                        </div>
-                        <button class="btn clr-none bg-cyan-800"><b>Đăng ký</b></button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-        <!--/.sing-up-form-->
-        
-    </div>
-
-</div>
-<%  
-    if (request.getParameter("submit") != null) {
-        AccountBUS acc = new AccountBUS();
-
-        String username = request.getParameter("username");
-        String pass = request.getParameter("pass");
-
-        ResultSet rs = acc.Login(username, pass);
-        while(rs.next()){
-            String us = rs.getString("username");
-            String pa = rs.getString("pass");
-            if (username == us & pass == pa) {
-                 if(rs.getInt("type") == 0){
-                      response.sendRedirect("/student/main.jsp");
-                 }
-                 else{
-                      response.sendRedirect("/student/main.jsp");
-                 }
-            }   
-        }
-    }
-    
-    // Here you put the check on the username and password
-    //if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("admin")) {
-      //  out.println("Welcome " + username + " <a href=\"index.jsp\">Back to main</a>");
-     //   session.setAttribute("username", username);
-    //}
-    ///else
-    ///   {
-   //     out.println("Invalid username and password");
-    //}
- %>
+        <div class="col-4"></div>   
+    </div>       
+</body>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="lib/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="lib/sweetalert2/sweetalert2.all.js"></script>
+    <link href="lib/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <script src="lib/datatable/jquery.dataTables.min.js"></script>
+    <script src="lib/datatable/dataTables.bootstrap4.min.js"></script>
+</html>
