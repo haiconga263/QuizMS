@@ -25,10 +25,11 @@
             
             if (username.equals(us) & pass.equals(pa)) {
                  if(rs.getInt("type") == 0){
-                      session.setAttribute("username",us);
+                      session.setAttribute("username", us);
                       response.sendRedirect("teacher/main.jsp");
                  }
                  else{
+                      session.setAttribute("username", us);
                       response.sendRedirect("student/main.jsp");
                  }
             }   
