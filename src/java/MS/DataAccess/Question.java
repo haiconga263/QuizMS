@@ -13,7 +13,13 @@ public class Question {
     private int id, id_exam, point;
     private String content, result;
     
-    public Question(int id, int id_exam, int point, String content, String result){}
+    public Question(int id, int id_exam, int point, String content, String result){
+        this.id = id;
+        this.id_exam = id_exam;
+        this.point = point;
+        this.content = content;
+        this.result = result;
+    }
     /**
      * @return the id
      */
