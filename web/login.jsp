@@ -22,15 +22,15 @@
         while(rs.next()){
             String us = rs.getString("username");
             String pa = rs.getString("pass");
-            
+            String id = rs.getString("id");
             if (username.equals(us) & pass.equals(pa)) {
                  if(rs.getInt("type") == 0){
                       session.setAttribute("username", us);
-                      response.sendRedirect("teacher/main.jsp");
+                      response.sendRedirect("teacher/students.jsp");
                  }
                  else{
                       session.setAttribute("username", us);
-                      response.sendRedirect("student/main.jsp");
+                      response.sendRedirect("student/main.jsp?id="+ id);
                  }
             }   
         }

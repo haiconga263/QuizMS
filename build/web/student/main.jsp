@@ -8,6 +8,7 @@
     String username = "";
     ExamBUS exBUS = new ExamBUS();
     List<Exam> lst = exBUS.getList();
+    session.setAttribute("id_ques", request.getParameter("id"));
 %>
 <!DOCTYPE html>
 <html>

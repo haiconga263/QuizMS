@@ -1,3 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.AbstractMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="MS.DataAccess.Answer"%>
 <%@page import="MS.Business.QuestionBUS"%>
 <%@page import="MS.DataAccess.Question"%>
 <%@page import="java.util.List"%>
@@ -6,9 +11,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿﻿<%
     String username = "";
+    int id_ques = 0;
+    String answer = "";
+    int id_student = 0;
+
+    Answer ans;// = new Answer(id_ques, id_student, answer);
+    //List<Answer> lstAns;
     int id = Integer.parseInt(request.getParameter("id"));
     QuestionBUS qu = new QuestionBUS();
     List<Question> lst = qu.getQuestionByExamId(id);
+    List<String> conten_ans = new ArrayList();
+    
+
+    // HashMap<Integer, String> mapAns = new HashMap<Integer, String>();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -65,24 +81,31 @@
                     <div class="container-fluid" id="dvQuestion">
                         ﻿<div class="row rounded">
                             <% for (int i = 0; i < lst.size(); i += 1) {%>
+
                             <div class="col-12 col-md-12 m-1">
                                 <div class="jumbotron pt-3 pb-2">
                                     <h5>Câu <%= lst.get(i).getId()%>:</h5>
-                                    <p class="lead w-100"><%= lst.get(i).getContent()%></p>
+                                    <p class="lead w-100" style="font-weight: bold; font-size: 16px; "><%= lst.get(i).getContent()%></p>
                                     <p class="font-italic">Câu trả lời: </p>
-                                    <textarea class="rounded w-100"></textarea>
+                                    <textarea class="rounded w-100" name="txtAns<%=lst.get(i).getId()%>"><%=lst.get(i).getId()%></textarea>
                                     <p class="font-italic text-right"><%= lst.get(i).getPoint()%> điểm</p>
                                 </div>
                             </div>
-                            <% }%>
+                            <%
+                                    String str = "txtAns" + lst.get(i).getId();
+                                    answer = request.getParameter(str);
+                                   // ans = new Answer(lst.get(i).getId(), 1, answer);
+                                }
+                            %>
+
                         </div>
                     </div>               
                     <div class="timedown-grp">
                         <ul class="nav">
                             <li class="nav-item mr-3">
-                                <button id="btnend" class="btn bg-orange-700 clr-none font-weight-bold btn-lg" onclick="location.href = '?page=student/exam-end'">
+                                <a id="btnend" class="btn bg-orange-700 clr-none btn-lg" href = "exam-end.jsp">
                                     Nộp bài
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </div>

@@ -1,3 +1,5 @@
+<%@page import="MS.Business.StudentBUS"%>
+<%@page import="MS.DataAccess.Student"%>
 <%@page import="java.util.List"%>
 <%@page import="MS.DataAccess.Exam"%>
 <%@page import="MS.Business.ExamBUS"%>
@@ -6,8 +8,8 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
     String username = "";
-    ExamBUS ex = new ExamBUS();
-    List<Exam> lst = ex.getList();
+    StudentBUS ex = new StudentBUS();
+    List<Student> lst = ex.GetStudent();
 %>
 <!DOCTYPE html>
 <html>
@@ -63,15 +65,13 @@
             <div class="container-fluid" id="content">    
                 <div class="row">
                     <div class="col-8 ml-2">
-                        <div class="row"><h2 class="clr-cyan-800">Danh sách bài kiểm tra</h2></div>
+                        <div class="row"><h2 class="clr-cyan-800">Danh sách bài sinh viên tham gia trả lời</h2></div>
                         <div class="row">
                             <table class="table table-striped">
                                 <thead class="clr-cyan-700">
                                     <tr>
-                                        <th scope="col">No.</th>
-                                        <th scope="col">Nội dung</th>
-                                        <th scope="col">Thời gian</th>
-                                        <th scope="col">Số lượng học sinh đã làm</th>
+                                        <th scope="col">MSSV</th>
+                                        <th scope="col">Tên sinh viên</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -79,8 +79,6 @@
                                     <tr>
                                         <th scope="row" class="clr-cyan-700"><%= lst.get(i).getId()%></th>
                                         <td><a><%= lst.get(i).getName()%></a></td>
-                                        <td><%= lst.get(i).getTime()%></td>
-                                        <td><%= lst.get(i).getStatus()%></td>
                                         <td class="text-center">22 (<a class="font-italic" href="question.jsp?id_exam=<%= lst.get(i).getId()%>">Chi tiết</a>)</td>
                                     </tr> 
                                     <% }%>                                        

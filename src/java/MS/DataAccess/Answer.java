@@ -10,13 +10,26 @@ package MS.DataAccess;
  * @author hieptd
  */
 public class Answer {
-    private int id, id_question;
-    private String username, answer;
-    
-    public Answer(int id, int id_question, String username, String answer){
-        this.id = id;
+    /**
+     * @return the id_student
+     */
+    public int getId_student() {
+        return id_student;
+    }
+
+    /**
+     * @param id_student the id_student to set
+     */
+    public void setId_student(int id_student) {
+        this.id_student = id_student;
+    }
+    private int id, id_question, id_student;
+    private String answer;
+   
+    public Answer(int id_question, int id_student, String answer){
+  
         this.id_question = id_question;
-        this.username = username;
+        this.id_student = id_student;
         this.answer = answer;
     }
     public int getID(){
@@ -30,12 +43,6 @@ public class Answer {
     }
     public void setId_question(int id){
         this.id_question = id;
-    }
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username = username;
     }
     public String getAnswer(){
         return this.answer;
