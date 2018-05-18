@@ -24,7 +24,7 @@ public class DataProvider {
     public Connection getConnection() throws Exception{
         try{
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:D:\\New folder\\QuizMS\\src\\java\\MS\\Helper\\QuizMS.db";          
+            String url = "jdbc:sqlite:/Users/hieptran/Desktop/QuizMS/QuizMS/src/java/MS/Helper/QuizMS.db";          
             connection = DriverManager.getConnection(url);
                      
         } catch(SQLException ex){

@@ -6,7 +6,6 @@
 package MS.Business;
 import MS.DataAccess.Answer;
 import MS.Helper.ExecuteQuery;
-import java.sql.ResultSet;
 /**
  *
  * @author hieptd

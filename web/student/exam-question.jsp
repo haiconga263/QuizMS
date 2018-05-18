@@ -21,11 +21,8 @@
     QuestionBUS qu = new QuestionBUS();
     List<Question> lst = qu.getQuestionByExamId(id);
     List<String> conten_ans = new ArrayList();
-    
-
-    // HashMap<Integer, String> mapAns = new HashMap<Integer, String>();
-
-%>
+    String str = request.getParameter("txtAns1");
+%>;
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,7 +35,7 @@
         <link href="../css/color.css" rel="stylesheet" />
     </head>
     <body>
-        <form method="POST">        <!--BEGIN: Menu-->
+        <form acction="exam-question.jsp" method="post">        <!--BEGIN: Menu-->
             <header class="navbar navbar-expand-sm navbar-light fixed-top bg-grey-100">
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -75,10 +72,10 @@
                 </div>
             </header>
             <!--END: Menu-->
-
             <div class="main pt-4 mt-5">
                 <div class="container-fluid" id="content">
                     <div class="container-fluid" id="dvQuestion">
+                        
                         ﻿<div class="row rounded">
                             <% for (int i = 0; i < lst.size(); i += 1) {%>
 
@@ -92,20 +89,16 @@
                                 </div>
                             </div>
                             <%
-                                    String str = "txtAns" + lst.get(i).getId();
-                                    answer = request.getParameter(str);
-                                   // ans = new Answer(lst.get(i).getId(), 1, answer);
                                 }
                             %>
-
                         </div>
                     </div>               
                     <div class="timedown-grp">
                         <ul class="nav">
                             <li class="nav-item mr-3">
-                                <a id="btnend" class="btn bg-orange-700 clr-none btn-lg" href = "exam-end.jsp">
+                                <button name="submit" value="submit" id="btnend" class="btn bg-orange-700 clr-none btn-lg">
                                     Nộp bài
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
