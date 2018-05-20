@@ -12,6 +12,7 @@ package MS.Helper;
 
 import java.sql.ResultSet;
 
+
 public class ExecuteQuery {
     DataProvider connect = new DataProvider();
 	
@@ -19,13 +20,7 @@ public class ExecuteQuery {
         String sql = "SELECT * FROM  " + tableName;
         return connect.executeQuery(sql);
     }
-    public boolean update(String sql) throws Exception{
-        int result = connect.executeUpdate(sql);
-        if(result != 0)
-            return true;
-        else
-            return false;
-    }
+    
     public ResultSet executeQuery(String sql) throws Exception{
         return connect.executeQuery(sql);
     }
@@ -39,9 +34,9 @@ public class ExecuteQuery {
         connect.executeUpdate(sql);
     }
 
-    public void deleteValues(String tableName, String condition) throws Exception{
-        String sql = "Delete " + tableName + " Where (" + condition + ")";
-        connect.executeUpdate(sql);
+    public int update(String sql) throws Exception{
+        return connect.executeUpdate(sql);
+        
     }
 
     public void close() throws Exception{

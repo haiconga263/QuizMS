@@ -67,6 +67,7 @@
                     <div class="row">
                         <div class="col-8 ml-2">
                             <div class="row"><h2 class="clr-cyan-800">Danh sách sinh viên</h2></div>
+                            <form method="post" action="exam-student.jsp">
                             <div class="row">
                                 <table class="table table-striped">
                                     <thead class="clr-cyan-700">
@@ -75,7 +76,7 @@
                                             <th scope="col">Họ tên</th>
                                             <th scope="col">Điểm</th>
                                             <th scope="col">Trạng thái</th>
-                                            <th scope="col"> </th>
+                                            <th scope="col">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,12 +86,13 @@
                                             <td><%= lst.get(i).getName()%></td>
                                             <td>0/10</td>
                                             <td>Chưa chấm</td>
-                                            <td><a href="exam-detail.jsp">Xem bài làm</a></td>
+                                            <td><a value="submit" name="submit" href="exam-student.jsp?name=<%=lst.get(i).getName() %>&id=<%= lst.get(i).getId() %>">Xem môn thi</a></td>
                                         </tr>
                                         <% }%>   
                                     </tbody>
                                 </table>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

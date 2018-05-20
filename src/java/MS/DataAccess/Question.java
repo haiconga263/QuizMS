@@ -11,15 +11,17 @@ package MS.DataAccess;
  */
 public class Question {
     private int id, id_exam, point;
-    private String content, result;
+    private String content, result, content_ans;
     
-    public Question(int id, int id_exam, int point, String content, String result){
+    public Question(int id, int id_exam, int point, String content, String result, String content_ans){
         this.id = id;
         this.id_exam = id_exam;
         this.point = point;
         this.content = content;
         this.result = result;
+        this.content_ans = content_ans;
     }
+   
     /**
      * @return the id
      */
@@ -88,5 +90,19 @@ public class Question {
      */
     public void setResult(String result) {
         this.result = result;
+    }
+
+    /**
+     * @return the content_ans
+     */
+    public String getContent_ans() {
+        return content_ans;
+    }
+
+    /**
+     * @param content_ans the content_ans to set
+     */
+    public void setConten_ans(String content_ans) {
+        this.content_ans = content_ans;
     }
 }

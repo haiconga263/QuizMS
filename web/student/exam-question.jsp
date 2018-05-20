@@ -1,3 +1,4 @@
+<%@page import="MS.Business.AnswerBUS"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.AbstractMap"%>
@@ -19,9 +20,24 @@
     //List<Answer> lstAns;
     int id = Integer.parseInt(request.getParameter("id"));
     QuestionBUS qu = new QuestionBUS();
+    AnswerBUS anBUS = new AnswerBUS();
     List<Question> lst = qu.getQuestionByExamId(id);
     List<String> conten_ans = new ArrayList();
-    String str = request.getParameter("txtAns1");
+    List<Answer>lstAns = new ArrayList<Answer>();
+    String str = "";
+    String id_u = (String)session.getAttribute("user_id");
+    for (int i = 0; i < lst.size(); i += 1) {
+        str = "txtAns" + lst.get(i).getId();
+        
+        String an = request.getParameter(str);
+       
+        ans = new Answer(lst.get(i).getId(), Integer.parseInt(id_u), an);
+        lstAns.add(ans);
+    }
+    if (request.getParameter("submit") != null) {
+       // anBUS.SaveAnswer(lstAns);
+            }
+    
 %>;
 <!DOCTYPE html>
 <html>
@@ -84,7 +100,7 @@
                                     <h5>Câu <%= lst.get(i).getId()%>:</h5>
                                     <p class="lead w-100" style="font-weight: bold; font-size: 16px; "><%= lst.get(i).getContent()%></p>
                                     <p class="font-italic">Câu trả lời: </p>
-                                    <textarea class="rounded w-100" name="txtAns<%=lst.get(i).getId()%>"><%=lst.get(i).getId()%></textarea>
+                                    <textarea class="rounded w-100" name="txtAns<%=lst.get(i).getId()%>"><%=lst.get(i).getContent_ans()%></textarea>
                                     <p class="font-italic text-right"><%= lst.get(i).getPoint()%> điểm</p>
                                 </div>
                             </div>

@@ -79,7 +79,7 @@
                                     <tr>
                                         <th scope="row" class="clr-cyan-700"><%= lst.get(i).getId()%></th>
                                         <td><a><%= lst.get(i).getName()%></a></td>
-                                        <td class="text-center">22 (<a class="font-italic" href="question.jsp?id_exam=<%= lst.get(i).getId()%>">Chi tiết</a>)</td>
+                                        <td class="text-center">22 (<a class="font-italic" href="exam_student.jsp?name=<%= lst.get(i).getName()%>">Chi tiết</a>)</td>
                                     </tr> 
                                     <% }%>                                        
                                 </tbody>
