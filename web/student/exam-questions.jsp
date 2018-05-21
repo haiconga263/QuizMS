@@ -23,24 +23,24 @@
     AnswerBUS anBUS = new AnswerBUS();
     List<Question> lst = qu.getQuestionByExamId(id);
     List<String> conten_ans = new ArrayList();
-    List<Answer>lstAns = new ArrayList<Answer>();
-    Map<Integer, String> map = new HashMap<Integer, String>();
+    //List<Answer>lstAns = new ArrayList<Answer>();
+    //Map<Integer, String> map = new HashMap<Integer, String>();
     String str = "";
-    String id_u = (String)session.getAttribute("user_id");
-    for (int i = 0; i < lst.size(); i += 1) {
-        str = "txtAns" + lst.get(i).getId();
+    //String id_u = (String)session.getAttribute("user_id");
+    //for (int i = 0; i < lst.size(); i += 1) {
+        //str = "txtAns" + lst.get(i).getId();
         
-        String an = request.getParameter(str);
+        //String an = request.getParameter(str);
        
-        ans = new Answer(lst.get(i).getId(), Integer.parseInt(id_u), an);
-        lstAns.add(ans);
+        //ans = new Answer(lst.get(i).getId(), Integer.parseInt(id_u), an);
+        //lstAns.add(ans);
         
-        map.put(lst.get(i).getId(), lstAns.get(i).getAnswer());
-    }
-    anBUS.InsertAnswer(map);
-    if (request.getParameter("submit") != null) {
+       // map.put(lst.get(i).getId(), lstAns.get(i).getAnswer());
+    //}
+    //anBUS.InsertAnswer(map);
+    //if (request.getParameter("submit") != null) {
        // anBUS.SaveAnswer(lstAns);
-            }
+         //   }
     
 %>;
 <!DOCTYPE html>
@@ -113,16 +113,7 @@
                             %>
                         </div>
                     </div>               
-                    <div class="timedown-grp">
-                        <ul class="nav">
-                            <li class="nav-item mr-3">
-                                <button name="submit" value="submit" id="btnend" class="btn bg-orange-700 clr-none btn-lg">
-                                    Nộp bài
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-
+                   
                     <a onclick="topFunction()" id="myBtn" href="javascript:void(0)" title="Go to top">
                         <strong><i class="fa fa-angle-double-up fa-3x clr-red-900 font-weight-bold" aria-hidden="true"></i></strong>
                     </a>

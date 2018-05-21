@@ -24,6 +24,7 @@
     List<Question> lst = qu.getQuestionByExamId(id);
     List<String> conten_ans = new ArrayList();
     List<Answer>lstAns = new ArrayList<Answer>();
+    Map<Integer, String> map = new HashMap<Integer, String>();
     String str = "";
     String id_u = (String)session.getAttribute("user_id");
     for (int i = 0; i < lst.size(); i += 1) {
@@ -33,7 +34,10 @@
        
         ans = new Answer(lst.get(i).getId(), Integer.parseInt(id_u), an);
         lstAns.add(ans);
+        
+        map.put(lst.get(i).getId(), lstAns.get(i).getAnswer());
     }
+    anBUS.InsertAnswer(map);
     if (request.getParameter("submit") != null) {
        // anBUS.SaveAnswer(lstAns);
             }

@@ -57,7 +57,7 @@ public class AnswerBUS {
             Map.Entry<Integer,Integer> pairs = (Map.Entry<Integer,Integer>)it.next();
             stmt.setInt(1, pairs.getValue());
             stmt.setInt(2, pairs.getKey());
-            stmt.addBatch(); // this will just collect the data values
+            stmt.addBatch();
             it.remove();
         }    
         res = stmt.executeBatch();
